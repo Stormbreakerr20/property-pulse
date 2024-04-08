@@ -3,11 +3,11 @@ import PropertCard from "@/components/PropertCard";
 
 const PropertiesPage = () => {
   return (
-    <section class="px-4 py-6">
-      <div class="container-xl lg:container m-auto px-4 py-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="px-4 py-6">
+      <div className="container-xl lg:container m-auto px-4 py-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {properties.length === 0 ? (
-            <div class="text-center">No properties found</div>
+            <div className="text-center">No properties found</div>
           ) : (
             properties.map((property, index) => 
             <>

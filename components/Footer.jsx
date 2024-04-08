@@ -3,7 +3,7 @@ import logo from "@/assets/images/logo.png";
 import Link from "next/link";
 
 const Footer = () => {
-    const curreentYear = new Date().getFullYear();
+  const curreentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-200 py-4 mt-24">
