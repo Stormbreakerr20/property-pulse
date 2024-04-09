@@ -1,6 +1,5 @@
 import { Schema, model, models } from "mongoose";
 
-// Google OAuth is used in the app however
 const PropertySchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
