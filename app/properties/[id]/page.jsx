@@ -1,5 +1,4 @@
 "use client";
-import { set } from "mongoose";
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fetchProperty } from "@/utils/request";

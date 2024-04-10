@@ -1,6 +1,8 @@
 import "@/assets/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthProvider from "@/components/AuthProvider";
+
 // For html meta-data
 export const metadata = {
   title: "Property Pulse | Find the Perfect Home",
@@ -11,15 +13,17 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <>
-      <html lang="en">
-        <body>
-          <Navbar />
-          <main>
-            <div className="main-layout">{children}</div>
-          </main>
-          <Footer />
-        </body>
-      </html>
+      <AuthProvider>
+        <html lang="en">
+          <body>
+            <Navbar />
+            <main>
+              <div className="main-layout">{children}</div>
+            </main>
+            <Footer />
+          </body>
+        </html>
+      </AuthProvider>
     </>
   );
 };

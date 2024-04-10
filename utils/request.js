@@ -1,20 +1,19 @@
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
 // fetch all properties
-export const fetchProperties = async () => {
+async function fetchProperties() {
   try {
     // handle the case where domain is not available yet
     if (!apiDomain) {
-      return { properties: [] };
+      return [];
     }
 
     // we are in server not client so put domain not /api/properties directly
-    const res = await fetch(`${apiDomain}/properties`);
+    const res = await fetch(`http://localhost:3000/api/properties`);
 
     if (!res.ok) {
       throw new Error("Failed to fetch properties");
     }
-
     return res.json();
   } catch (error) {
     console.log(error);
@@ -42,3 +41,5 @@ export const fetchProperty = async (id) => {
     return null;
   }
 };
+
+export {fetchProperties}

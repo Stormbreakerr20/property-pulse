@@ -8,7 +8,6 @@ export const GET = async (req, res) => {
 
     // Get all properties
     const properties = await Property.find({});
-
     return new Response(JSON.stringify(properties), {
       status: 200,
     });
