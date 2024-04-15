@@ -3,6 +3,7 @@ import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { fetchProperty } from "@/utils/request";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
+import PropertyImages from "@/components/PropertyImages";
 import PropertyDetails from "@/components/PropertyDetails";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
@@ -157,6 +158,7 @@ const page = () => {
               </div>
             </div>
           </section>
+          <PropertyImages images = {property.images}/>
         </>
       )}
     </>
