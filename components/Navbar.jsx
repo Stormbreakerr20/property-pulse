@@ -10,9 +10,9 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Navbar = () => {
   const { data: session } = useSession(); // renames data to session
-  
+
   const profileImage = session?.user?.image || profileDefault;
-  
+
   const [providers, setProviders] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-blue-700 border-b border-blue-500">
+      <nav className="bg-blue-700 border-b border-blue-500 ">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-20 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -170,8 +170,8 @@ const Navbar = () => {
                         className="h-8 w-8 rounded-full"
                         src={profileImage}
                         alt=""
-                        width={0}
-                        height={0}
+                        width={200}
+                        height={200}
                       />
                     </button>
                   </div>
@@ -187,6 +187,7 @@ const Navbar = () => {
                       tabIndex="-1"
                     >
                       <Link
+                        onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                         href="/profile"
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
@@ -196,6 +197,7 @@ const Navbar = () => {
                         Your Profile
                       </Link>
                       <Link
+                        onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                         href="/properties/saved"
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"

@@ -56,7 +56,7 @@ export const POST = async (req, res) => {
       },
       beds: formData.get("beds"),
       baths: formData.get("baths"),
-      sqaure_feet: formData.get("sqaure_feet"),
+      square_feet: formData.get("square_feet"),
       amenities,
       rates: {
         weekly: formData.get("rates.weekly"),

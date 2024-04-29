@@ -15,8 +15,8 @@ const PropertCard = ({ property }) => {
         src={property.images[0]}
         alt=""
         className="w-full h-auto rounded-t-xl"
-        height={0}
-        width={0}
+        height={200}
+        width={200}
       />
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
