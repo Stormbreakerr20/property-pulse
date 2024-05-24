@@ -1,17 +1,17 @@
 "use client";
 import PropertyCard from "@/components/PropertyCard";
-import { fetchProperties } from "@/utils/request";
+import { fetchBookmarks } from "@/utils/request";
 import { useEffect, useState } from "react";
 import Spinner from "@/components/Spinnner";
 
-const PropertiesPage = async () => {
+function page() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   useEffect(() => {
     const fetchPropertiesData = async () => {
       try {
-        const properties = await fetchProperties();
+        const properties = await fetchBookmarks();
         setProperties(properties);
       } catch (error) {
         console.error("Error fetching property: ", error);
@@ -19,11 +19,10 @@ const PropertiesPage = async () => {
         setLoading(false);
       }
     };
-    
+
     fetchPropertiesData();
   }, []);
-  
-  // Sort properties by Date
+
   properties.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   return (
     <>
@@ -32,7 +31,7 @@ const PropertiesPage = async () => {
         <section className="px-4 py-6">
           <div className="container-xl lg:container m-auto px-4 py-6">
             {properties.length === 0 ? (
-              <div className="text-center">No properties found</div>
+              <div className="text-center">No saved properties found</div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {properties.map((property, index) => (
@@ -45,6 +44,6 @@ const PropertiesPage = async () => {
       )}
     </>
   );
-};
+}
 
-export default PropertiesPage;
+export default page;

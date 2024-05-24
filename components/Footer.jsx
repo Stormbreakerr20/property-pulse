@@ -3,7 +3,7 @@ import logo from "@/assets/images/logo.png";
 import Link from "next/link";
 
 const Footer = () => {
-  const curreentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-200 py-4 mt-24">
@@ -13,7 +13,7 @@ const Footer = () => {
         </div>
         <div>
           <p className="text-sm text-gray-500 mt-2 md:mt-0">
-            &copy; {curreentYear} PropertyPulse. All rights reserved.
+            &copy; {currentYear} PropertyPulse. All rights reserved.
           </p>
         </div>
       </div>

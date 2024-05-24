@@ -63,3 +63,18 @@ export const fetchProperty = async (id) => {
     return null;
   }
 };
+
+// fetch bookmarks
+export const fetchBookmarks = async () => {
+  try {
+    const res = await fetch(`/api/bookmarks`);
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch bookmarks");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
