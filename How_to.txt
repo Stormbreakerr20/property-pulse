@@ -1,0 +1,95 @@
+cmd : npx create-next-app@latest
+cmd : npm run dev
+
+for app : page.jsx is children for layout.jsx
+
+page.jsx is like rooted page for the folder
+
+app is folder we use for routes to pages
+
+app/properties: page.jsx 
+on browser: http://localhost:3000/properties - works
+
+nested routes: 
+if to add properties : /properties/add 
+create a folder add inside properties folder and add page.jsx for that
+
+dynamic routes: /properties/[id] ex:/properties/123
+create /properties/[id]/page.jsx - works
+
+to make /properties/123 to /properties/123/abc
+
+create rename folder [id] to [...id]
+
+to get params: useParams and to get /id/rest useSearchParams
+
+
+Rendering: https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns
+Server comp:
+doing console.log in server comp will not be shown in browser console as it is server side rendered
+any component is server side rendered, it will not have access to window object (useState, useEffect, OnClick etc)
+
+Client comp:
+doing console.log in client comp will be shown in browser console as it is client side rendered
+any component is client side rendered, it will have access to window object (useState, useEffect, OnClick etc)
+to make a Client comp at top add: 'use client' in that page.jsx
+
+to get path current: usePathname()
+
+create loading.jsx and not-found.jsx Next will automatically use them when needed
+
+
+DB : Create DB -> go to database option -> connect -> drivers -> create .env in root
+Install Compass for local use
+connect to db via db.js
+
+USAGE:
+import connectDB from "@/config/db";
+use this in page.jsx to connect to db
+
+For api : api folder in app folder
+api/properties by api->properties folders
+
+api works at same host EX: http://localhost:3000/api/properties
+
+Models: add folder models to root
+
+
+Connect Backend and Frontend :: in properties/page.jsx
+
+
+Create functions like fetch in utils folder in root
+
+Next Image: height and width imp
+<Image
+    src={`/images/properties/${image}`}
+    alt=""
+    className="object-cover h-[400px] w-full"
+    width={200}
+    height={200}
+    sizes='100vw'
+/>
+
+
+// image for DB : we will use cloudinary for image upload
+cloudinary:
+1. Signup => go to settings => select proj => Access Key => copy and paste in env
+2. npm i cloudinary
+3. Create a new folder in config ==> cloudinary folders
+4. Cl.js in config folder
+5. Add cloudinary url to next-config.mjs to use in Frontend
+
+
+// As we add new property it wasnt updating properties page right away so we added no cache in request.js
+
+
+// Maps
+mapbox.com and react-map-gl
+Now for marker ==> latitude and longitude use google Geocode API and react-geocode package
+1. Signup => go to settings => select proj => Access Key => copy and paste in env
+2. npm i react-map-gl
+
+Checkout from course not implemented here as card reqd
+
+
+// react-share for social media sharing

@@ -1,0 +1,80 @@
+we will use Google provider with next Auth
+1. Go to console.cloud.google.com
+2. Create a new project
+3. Select That project
+4. Search and Go to API and services
+5. Click on Credentials
+6. Click on Create Credentials
+7. Select OAuth client ID
+8. Select Web Application
+9. Click Create directly
+10. Add remove scopes ==> Choose profile and email
+11. Save 
+12. Add Users
+13. Back to Dash
+
+14. Go to Cred => Create OAuth client ID
+15. Add uri in js
+16 redirect_uri: "http://localhost:3000/api/auth/callback/google
+17. copy client id and secret and go to .env
+
+NEXT AUTH: for google (can check docs) : https://next-auth.js.org/ go to provider => google
+create /pages/api/auth/[...nextauth] and authOptions.js in utlis
+
+We then need to bring Sessionprovider to wrap layout.jsx but we would have to make it into client component
+So we use another file (client component) then bring it to layout :: AuthProvider.jsx
+What we wrap will be taken is children in it :: will be wrapped in layout.jsx
+
+
+ADD 3 env variable as in Conf/options on docs
+genereate random string for secret:: via :: openssl rand -base64 32 in terminal
+
+
+/// Work on Sign in btn
+Note: anything like /api/auth/xyz will be handled by next-auth
+Go to Nave and import { signIn,signOut, useSession, getProviders } from "next-auth/react";
+1. now check for session
+2. add providers ==> useEffect part
+
+providers = {
+    google: {
+      id: 'google',
+      name: 'Google',
+      type: 'oauth',
+      signinUrl: 'http://localhost:3000/api/auth/signin/google',
+      callbackUrl: 'http://localhost:3000/api/auth/callback/google'
+    }
+  }
+Above is what providers will look like
+
+3. Loop through providers (currently only google)  :: at Login and registor btn
+MAP an object
+Object.values(providers).map((provider) => (
+     <button onClick={() => signIn(provider.id)} className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2">
+       <FaGoogle className="mr-2 mt-1" />
+       <span>Login or Register</span>
+     </button>
+))}
+
+4. Save user to DB in authoptions
+
+5. Now whenever we need session we can use useSession hook
+
+session =  {
+    user: {
+      name: 'LUV SHARMA',
+      email: 'luvsharma.del@gmail.com',
+      image: 
+        'https://lh3.googleusercontent.com/a/ACg8ocKOQEttMlYHcZGakDQ_4psQ3guBpSokvDIo8t9VQ0yBThtuniQ=s96-c',
+      id: '6616276e5b8be258eaf54a2a'
+    },
+    expires: '2024-05-10T05:48:08.678Z'
+  }
+
+Note: Error: Invalid src prop (https://lh3.googleusercontent.com/a/ACg8ocKOQEttMlYHcZGakDQ_4psQ3guBpSokvDIo8t9VQ0yBThtuniQ=s96-c) on `next/image`, hostname "lh3.googleusercontent.com" is not configured under images in your `next.config.js`
+See more info: https://nextjs.org/docs/messages/next-image-unconfigured-host
+Got this error as domain not defined in next.config.mjs file :: add images
+
+
+6. signOut and protect Routes :: not loggedin user can't access properties
+done via Middleware.js in next-auth
